@@ -1,9 +1,15 @@
 import User from "../models/user.model.js";
 
+/**
+ * Controller function to fetch users for sidebar
+ * @param {object} req - Express request object
+ * @param {object} res - Express response object
+ */
 export async function getUsersForSidebar(req, res) {
   try {
     const loggedInUserId = req.user._id;
 
+    // Fetch users excluding the logged-in user
     const filteredUsers = await User.find({
       _id: { $ne: loggedInUserId },
     }).select("-password");

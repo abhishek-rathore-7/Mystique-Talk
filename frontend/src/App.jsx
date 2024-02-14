@@ -8,6 +8,7 @@ import Home from "./pages/home/Home.jsx";
 
 /**
  * Main component of the application.
+ * Renders different pages based on user authentication status.
  * @returns {JSX.Element} - Returns the JSX for rendering the application.
  */
 function App() {

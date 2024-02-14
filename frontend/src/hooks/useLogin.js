@@ -1,6 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useAuthContext } from "../context/AuthContext.jsx";
+import { useAuthContext } from "../context/AuthContext";
 
 /**
  * Custom hook for handling user login functionality.

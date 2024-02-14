@@ -9,18 +9,30 @@ import { extractTime } from "../../utils/extractTime.js";
  * @returns {JSX.Element} - Returns the JSX for rendering the message.
  */
 const Message = ({ message }) => {
+  // Accessing authentication context
   const { authUser } = useAuthContext();
+
+  // Accessing conversation context
   const { selectedConversation } = useConversationContext();
+
+  // Determine if the message is from the current user
   const fromMe = message.senderId === authUser._id;
+
+  // Extracting formatted time from message creation timestamp
   const formattedTime = extractTime(message.createdAt);
+
+  // Determine chat bubble alignment based on message sender
   const chatClassName = fromMe ? "chat-end" : "chat-start";
+
+  // Determine profile picture URL based on message sender
   const profilePic = fromMe
     ? authUser.profilePic
     : selectedConversation?.profilePic;
+
+  // Determine bubble background color based on message sender
   const bubbleBgColor = fromMe ? "bg-blue-500" : "";
 
-  // console.log(message);
-
+  // Determine whether to apply a shake animation to the message bubble
   const shakeClass = message.shouldShake ? "shake" : "";
 
   return (

@@ -13,6 +13,7 @@ const MessageContainer = () => {
   const { selectedConversation, setSelectedConversation } =
     useConversationContext();
 
+  // Reset selected conversation when component unmounts
   useEffect(() => {
     return () => {
       setSelectedConversation(null);
@@ -21,9 +22,11 @@ const MessageContainer = () => {
 
   return (
     <div className="md:min-w-[450px] flex flex-col">
+      {/* Render when no conversation is selected */}
       {!selectedConversation ? (
         <NoChatSelected />
       ) : (
+        // Render when conversation is selected
         <>
           <div className="bg-slate-500 px-4 py-2 mb-2">
             <span className="label-text">To:</span>{" "}
@@ -31,7 +34,9 @@ const MessageContainer = () => {
               {selectedConversation.fullName}
             </span>
           </div>
+          {/* Render messages */}
           <Messages />
+          {/* Render message input */}
           <MessageInput />
         </>
       )}

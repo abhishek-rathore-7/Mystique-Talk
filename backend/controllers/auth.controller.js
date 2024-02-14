@@ -2,9 +2,20 @@ import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import generateTokenAndSetCookie from "../utils/generateToken.js";
 
+/**
+ * Controller function to handle user signup
+ * @param {object} req - Express request object
+ * @param {object} res - Express response object
+ */
 export async function signup(req, res) {
   try {
     const { fullName, username, password, confirmPassword, gender } = req.body;
+
+    if (/\s/.test(username.trim())) {
+      return res
+        .status(400)
+        .json({ error: "Username may not contain whitespace" });
+    }
 
     if (password !== confirmPassword) {
       return res.status(400).json({ error: "Password don't match" });
@@ -50,6 +61,11 @@ export async function signup(req, res) {
   }
 }
 
+/**
+ * Controller function to handle user login
+ * @param {object} req - Express request object
+ * @param {object} res - Express response object
+ */
 export async function login(req, res) {
   try {
     const { username, password } = req.body;
@@ -78,6 +94,11 @@ export async function login(req, res) {
   }
 }
 
+/**
+ * Controller function to handle user logout
+ * @param {object} req - Express request object
+ * @param {object} res - Express response object
+ */
 export function logout(req, res) {
   try {
     res.cookie("jwt", "", { maxAge: 0 });

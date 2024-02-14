@@ -3,7 +3,10 @@ import { createContext, useContext, useState } from "react";
 // Create the authentication context
 export const AuthContext = createContext();
 
-// Custom hook to access the authentication context
+/**
+ * Custom hook to access the authentication context.
+ * @returns {object} - The authentication context value.
+ */
 export const useAuthContext = () => {
   return useContext(AuthContext);
 };

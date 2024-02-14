@@ -1,6 +1,12 @@
 import jwt from "jsonwebtoken";
 import User from "../models/user.model.js";
 
+/**
+ * Middleware to protect routes by verifying JWT token
+ * @param {object} req - Express request object
+ * @param {object} res - Express response object
+ * @param {function} next - Next middleware function
+ */
 export default async function protectRoute(req, res, next) {
   try {
     const token = req.cookies.jwt;
@@ -22,6 +28,7 @@ export default async function protectRoute(req, res, next) {
       return res.status(401).json({ error: "User not found" });
     }
 
+    // Attach the user object to the request for further use in subsequent middleware or routes
     req.user = user;
 
     next();

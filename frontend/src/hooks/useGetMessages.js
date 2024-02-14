@@ -25,8 +25,6 @@ function useGetMessages() {
         // Parse response data
         const data = await res.json();
 
-        console.log(data);
-
         // Check for errors in the response
         if (data.error) {
           // Throw an error if an error message is received

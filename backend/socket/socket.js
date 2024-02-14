@@ -42,8 +42,6 @@ export const getReceiverSocketId = (receiverId) => {
 
 // Socket.IO connection event
 io.on("connection", (socket) => {
-  console.log("a user connected", socket.id);
-
   const userId = socket.handshake.query.userId;
 
   // Add user's socket ID to the map
@@ -56,8 +54,6 @@ io.on("connection", (socket) => {
 
   // Socket.IO disconnect event
   socket.on("disconnect", () => {
-    console.log("user disconnected", socket.id);
-
     // Remove user's socket ID from the map
     delete userSocketMap[userId];
 

@@ -33,7 +33,7 @@ export default async function protectRoute(req, res, next) {
 
     next();
   } catch (error) {
-    console.log("Error in protectRoute middleware: " + error.message);
+    console.error("Error in protectRoute middleware: " + error.message);
     req.status(500).json({ error: "Internal Server Error" });
   }
 }

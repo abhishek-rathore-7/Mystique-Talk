@@ -17,8 +17,6 @@ function Login() {
   // Function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // Display the entered username and password in the console
-    console.log(username, password);
     // Call the login function with the entered credentials
     await login({ username, password });
   };

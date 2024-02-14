@@ -1,6 +1,5 @@
 import { useConversationContext } from "../../context/ConversationContext.jsx";
 import { useSocketContext } from "../../context/SocketContext.jsx";
-import { getRandomEmoji } from "../../utils/getRandomEmoji.js";
 
 /**
  * Conversation component for displaying conversation details.

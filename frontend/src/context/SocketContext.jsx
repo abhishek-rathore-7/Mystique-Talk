@@ -30,7 +30,7 @@ export function SocketContextProvider({ children }) {
   useEffect(() => {
     // Establish socket connection if user is authenticated
     if (authUser) {
-      const socket = io("http://localhost:5000", {
+      const socket = io("https://mystique-talk.onrender.com/", {
         query: {
           userId: authUser._id,
         },

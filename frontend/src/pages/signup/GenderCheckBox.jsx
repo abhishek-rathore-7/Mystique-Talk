@@ -1,19 +1,49 @@
-const GenderCheckbox = () => {
+import React from "react";
+
+/**
+ * GenderCheckbox component for selecting gender.
+ * @param {Object} props - Component props.
+ * @param {Function} props.onCheckboxChange - Function to handle checkbox change.
+ * @param {string} props.selectedGender - Currently selected gender.
+ * @returns {JSX.Element} - GenderCheckbox component.
+ */
+const GenderCheckbox = ({ onCheckboxChange, selectedGender }) => {
   return (
     <div className="flex">
+      {/* Male Checkbox */}
       <div className="form-control">
-        <label className={`label gap-2 cursor-pointer`}>
+        <label
+          className={`label gap-2 cursor-pointer ${
+            selectedGender === "male" ? "selected" : ""
+          } `}
+        >
           <span className="label-text">Male</span>
-          <input type="checkbox" className="checkbox border-slate-900" />
+          <input
+            type="checkbox"
+            className="checkbox border-slate-900"
+            checked={selectedGender === "male"}
+            onChange={() => onCheckboxChange("male")}
+          />
         </label>
       </div>
+      {/* Female Checkbox */}
       <div className="form-control">
-        <label className={`label gap-2 cursor-pointer`}>
+        <label
+          className={`label gap-2 cursor-pointer  ${
+            selectedGender === "female" ? "selected" : ""
+          }`}
+        >
           <span className="label-text">Female</span>
-          <input type="checkbox" className="checkbox border-slate-900" />
+          <input
+            type="checkbox"
+            className="checkbox border-slate-900"
+            checked={selectedGender === "female"}
+            onChange={() => onCheckboxChange("female")}
+          />
         </label>
       </div>
     </div>
   );
 };
+
 export default GenderCheckbox;
